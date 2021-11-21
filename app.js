@@ -8,7 +8,6 @@ const btnAdd = document.querySelector('.product-add-to-cart >button')
 const svgCart = document.querySelector('#cart >div:first-child')
 const label = document.querySelector('#cart >div:first-child span')
 const avatar = document.querySelector('#cart >div:last-child img')
-// const sticker = document.querySelector('#cart >div:last-child >div')
 const sticker = document.querySelector('header >div:last-child')
 
 //My count & price
