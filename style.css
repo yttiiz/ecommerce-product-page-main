@@ -135,6 +135,7 @@ footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
     header >div nav >div:last-child >div ul li {margin: 0; height: 40px;}
     header >div nav >div:last-child >div ul li a {color: var(--very-vark-blue); font-weight: 700;}
     header >div nav >div:last-child >div ul li a:hover {border-bottom: 4px solid transparent}
+    #cart >div:last-child >img:hover {border: none;}
 
     main >div {flex-direction: column;}
     .product-presentation-images, .product-presentation-infos, #show-images-product >div {width: 350px;}
