@@ -5,24 +5,24 @@ header, main, footer {max-width: 1110px; margin: 0 auto;}
 
 /* ==========[ header ]========== */
 header {height: 130px; position: relative; border-bottom: 1px solid var(--light-grey);}
-header, header >div, header >div nav ul, #cart {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
-header >div:not(:last-child), header >div nav {height: 100%;}
-header >div:last-child {display: none;}
-header >div nav, header >div nav ul li a {display: flex; flex-direction: row; align-items: center;}
+header, header > div, header > div nav ul, #cart {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+header > div:not(:last-child), header > div nav {height: 100%;}
+header > div:last-child {display: none;}
+header > div nav, header > div nav ul li a {display: flex; flex-direction: row; align-items: center;}
 #logo {width: max-content; margin-right: 70px;}
 #logo a {display: block; padding: 20px 0;}
 #logo a img {width: 138px; height: auto;}
-header >div nav >div:first-child {display: none; width: 26px; height: 26px; display: none; flex-direction: column; justify-content: space-between; padding: 5px;}
-header >div nav >div:first-child div {width: 100%; height: 3px; background: var(--very-vark-blue); transform-origin: 0 50%; transition: .3s;}
-header >div nav >div:last-child, header >div nav >div:last-child >div, header >div nav >div:last-child >div ul, header >div nav >div:last-child >div ul li, header >div nav >div:last-child >div ul li a {height: 100%;}
-header >div nav >div:last-child >div {position: absolute;}
+header > div nav > div:first-child {display: none; width: 26px; height: 26px; display: none; flex-direction: column; justify-content: space-between; padding: 5px;}
+header > div nav > div:first-child div {width: 100%; height: 3px; background: var(--very-vark-blue); transform-origin: 0 50%; transition: .3s;}
+header > div nav > div:last-child, header > div nav > div:last-child > div, header > div nav > div:last-child > div ul, header > div nav > div:last-child > div ul li, header > div nav > div:last-child > div ul li a {height: 100%;}
+header > div nav > div:last-child > div {position: absolute;}
     
-header >div nav >div:last-child >div ul li {margin: 0 15px;}
-header >div nav >div:last-child >div ul li:first-child {margin-left: 0;}
-header >div nav >div:last-child >div ul li:last-child {margin-right: 0;}
-header >div nav >div:last-child >div ul li a {text-decoration: none; color: var(--light-grey); border-top: 4px solid transparent; border-bottom: 4px solid transparent;}
-header >div nav >div:last-child >div ul li a, #cart >div:first-child svg path, #cart >div:last-child img, .product-presentation-images >div a img {transition: .3s;}
-header >div nav >div:last-child >div ul li a:hover {color: var(--very-vark-blue); border-bottom: 4px solid var(--orange-color)}
+header > div nav > div:last-child > div ul li {margin: 0 15px;}
+header > div nav > div:last-child > div ul li:first-child {margin-left: 0;}
+header > div nav > div:last-child > div ul li:last-child {margin-right: 0;}
+header > div nav > div:last-child > div ul li a {text-decoration: none; color: var(--light-grey); border-top: 4px solid transparent; border-bottom: 4px solid transparent;}
+header > div nav > div:last-child > div ul li a, #cart > div:first-child svg path, #cart > div:last-child img, .product-presentation-images > div a img {transition: .3s;}
+header > div nav > div:last-child > div ul li a:hover {color: var(--very-vark-blue); border-bottom: 4px solid var(--orange-color)}
 
 .display-content {background: var(--black-lightbox); display: block !important;}
 .display-content .move {transition: transform .3s ease-in-out; transform: translateX(0);}
@@ -32,74 +32,74 @@ header >div nav >div:last-child >div ul li a:hover {color: var(--very-vark-blue)
 .hide-line-2 {display: none;}
 
 #cart {width: 150px;}
-#cart >div:first-child {cursor: pointer; padding: 5px; position: relative;}
-#cart >div:first-child svg:hover path {fill: var(--very-vark-blue)}
-#cart >div:last-child {max-width: 70px; position: relative;}
-#cart >div:last-child >img:hover {border: 4px solid var(--orange-color)}
-#cart >div:last-child >img {width: 100%; height: auto; border: 4px solid transparent; border-radius: 50%; cursor: pointer;}
-#cart >div:last-child >div {display: none;}
+#cart > div:first-child {cursor: pointer; padding: 5px; position: relative;}
+#cart > div:first-child svg:hover path {fill: var(--very-vark-blue)}
+#cart > div:last-child {max-width: 70px; position: relative;}
+#cart > div:last-child > img:hover {border: 4px solid var(--orange-color)}
+#cart > div:last-child > img {width: 100%; height: auto; border: 4px solid transparent; border-radius: 50%; cursor: pointer;}
+#cart > div:last-child > div {display: none;}
 
 .cart-count-not-empty {position: absolute; top: -5%; left: 35%; padding: 1px 8px; border-radius: 15px; background: var(--orange-color); color: #fff; font-size: 11px; font-weight: 700;}
 .sticker {position: absolute; top: 90%; right: 0; width: 360px; height: max-content; display: flex !important; flex-direction: column; background-color: #fff; box-shadow: 0 10px 25px rgb(0 0 0 / 10%); border-radius: 20px; z-index: 1;}
 .sticker h3 {font-size: 16px; font-weight: 700; padding: 20px; border-bottom: 1px solid var(--light-grey); width: 100%;}
-.sticker >div {display: flex; flex-direction: column; justify-content: center; padding: 20px; height: 160px; width: 100%;}
-.sticker >div >span {display: block; text-align: center; width: 100%; font-weight: 700; color: var(--very-vark-blue)}
-.sticker >div >div:first-child {display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin-bottom: 20px;}
-.sticker >div >div:first-child img {display: inline-block; width: 50px; height: auto; border-radius: 5px;}
-.sticker >div >div:first-child span {display: inline-block; font-size: 16px; font-weight: 400; color: var(--light-grey); line-height: 25px;}
-.sticker >div >div:first-child svg {cursor: pointer;}
-.sticker >div >div:last-child button {background: var(--orange-color); width: 100%; padding: 15px; color: #fff; font-weight: 700; cursor: pointer; border: none; outline: none; border-radius: 10px; transition: .3s;}
-.sticker >div >div:last-child button:hover {background: var(--intermediate-orange-color);}
+.sticker > div {display: flex; flex-direction: column; justify-content: center; padding: 20px; height: 160px; width: 100%;}
+.sticker > div > span {display: block; text-align: center; width: 100%; font-weight: 700; color: var(--very-vark-blue)}
+.sticker > div > div:first-child {display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin-bottom: 20px;}
+.sticker > div > div:first-child img {display: inline-block; width: 50px; height: auto; border-radius: 5px;}
+.sticker > div > div:first-child span {display: inline-block; font-size: 16px; font-weight: 400; color: var(--light-grey); line-height: 25px;}
+.sticker > div > div:first-child svg {cursor: pointer;}
+.sticker > div > div:last-child button {background: var(--orange-color); width: 100%; padding: 15px; color: #fff; font-weight: 700; cursor: pointer; border: none; outline: none; border-radius: 10px; transition: .3s;}
+.sticker > div > div:last-child button:hover {background: var(--intermediate-orange-color);}
 
 /* ==========[ main ]========== */
 main {position: relative;}
-main >div {display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 50px; margin: 40px 0;}
+main > div {display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 50px; margin: 40px 0;}
 .product-presentation-images, .product-presentation-infos {width: 45%;}
-.product-presentation-images >div {width: 100%;}
-.product-presentation-images >div >img,.product-presentation-images >div >div, .product-presentation-images >div >div img {width: 100%;}
-.product-presentation-images >div >img {border-radius: 20px; display: block;}
-.product-presentation-images >div >div:last-child {display: grid; grid-template: max-content / 22% 22% 22% 22%; gap: 4%; height: max-content; margin-top: 20px; padding: 20px;}
-.product-presentation-images >div a {border-radius: 10px; border: 2px solid transparent; display: block; overflow: hidden; background: #fff;}
-.product-presentation-images >div >div a:hover img {opacity: .5}
-.product-presentation-images >div >div a.active {border: 2px solid var(--orange-color);}
-.product-presentation-images >div >div a.active img {opacity: .5;}
-.product-presentation-images >div >div a img {height: auto; display: block; background: #fff;}
-.product-presentation-infos >div:nth-child(1), .product-presentation-infos >div:nth-child(2) {margin-bottom: 30px;}
-.product-presentation-infos >div:nth-child(1) h1 {font-size: 20px; font-weight: 700; color: var(--orange-color); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px;}
-.product-presentation-infos >div:nth-child(1) h2 {font-size: 46px; line-height: 52px; font-weight: 700; color: var(--very-vark-blue); margin-bottom: 50px;}
-.product-presentation-infos >div:nth-child(1) p {font-size: 16px; line-height: 30px; font-weight: 400; color: var(--light-grey);}
-.product-price >span {display: flex; flex-direction: row; align-items: center; margin-bottom: 5px;}
-.product-price >span span:nth-child(1) {font-size: 26px; font-weight: 700; color: var(--very-vark-blue); margin-right: 20px;}
-.product-price >span span:nth-child(2) {font-size: 14px; font-weight: 700; color: var(--orange-color); padding: 3px 6px; background: var(--pale-orange-color); border-radius: 3px;}
+.product-presentation-images > div {width: 100%;}
+.product-presentation-images > div > img,.product-presentation-images > div > div, .product-presentation-images > div > div img {width: 100%;}
+.product-presentation-images > div > img {border-radius: 20px; display: block;}
+.product-presentation-images > div > div:last-child {display: grid; grid-template: max-content / 22% 22% 22% 22%; gap: 4%; height: max-content; margin-top: 20px; padding: 20px;}
+.product-presentation-images > div a {border-radius: 10px; border: 2px solid transparent; display: block; overflow: hidden; background: #fff;}
+.product-presentation-images > div > div a:hover img {opacity: .5}
+.product-presentation-images > div > div a.active {border: 2px solid var(--orange-color);}
+.product-presentation-images > div > div a.active img {opacity: .5;}
+.product-presentation-images > div > div a img {height: auto; display: block; background: #fff;}
+.product-presentation-infos > div:nth-child(1), .product-presentation-infos > div:nth-child(2) {margin-bottom: 30px;}
+.product-presentation-infos > div:nth-child(1) h1 {font-size: 20px; font-weight: 700; color: var(--orange-color); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px;}
+.product-presentation-infos > div:nth-child(1) h2 {font-size: 46px; line-height: 52px; font-weight: 700; color: var(--very-vark-blue); margin-bottom: 50px;}
+.product-presentation-infos > div:nth-child(1) p {font-size: 16px; line-height: 30px; font-weight: 400; color: var(--light-grey);}
+.product-price > span {display: flex; flex-direction: row; align-items: center; margin-bottom: 5px;}
+.product-price > span span:nth-child(1) {font-size: 26px; font-weight: 700; color: var(--very-vark-blue); margin-right: 20px;}
+.product-price > span span:nth-child(2) {font-size: 14px; font-weight: 700; color: var(--orange-color); padding: 3px 6px; background: var(--pale-orange-color); border-radius: 3px;}
 .product-price s {font-size: 14px; font-weight: 400; color: var(--light-grey);}
-.product-add-to-cart, .product-add-to-cart >div:first-child, .product-add-to-cart >div:last-child {display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
-.product-add-to-cart >div,.product-add-to-cart >button {border-radius: 10px; height: 50px;}
-.product-add-to-cart >div {background: #f7f8fd; width: 35%;}
-.product-add-to-cart >div button, .product-add-to-cart >div input, .product-add-to-cart >button {font-weight: 700; border: none; outline: none; background: none;}
-.product-add-to-cart >div button {width: 30%; height: 100%; cursor: pointer; display: flex; flex-direction: row; justify-content: center; align-items: center;}
-.product-add-to-cart >div button svg use {transition: .3s;}
-.product-add-to-cart >div button:hover svg use {fill: var(--intermediate-orange-color);}
-.product-add-to-cart >div input {width: 40%; font-size: 16px; text-align: center; padding: 15px;}
-.product-add-to-cart >button {width: 60%; display: flex; flex-direction: row; justify-content: center; align-items: center; background: var(--orange-color); padding: 15px; color: #fff; cursor: pointer; transition: .3s;}
-.product-add-to-cart >button:hover {background: var(--intermediate-orange-color);}
-.product-add-to-cart >button svg {display: inline-block; width: 18px; height: auto; margin-right: 20px;}
-.product-add-to-cart >button svg path {fill: #fff;}
+.product-add-to-cart, .product-add-to-cart > div:first-child, .product-add-to-cart > div:last-child {display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
+.product-add-to-cart > div,.product-add-to-cart > button {border-radius: 10px; height: 50px;}
+.product-add-to-cart > div {background: #f7f8fd; width: 35%;}
+.product-add-to-cart > div button, .product-add-to-cart > div input, .product-add-to-cart > button {font-weight: 700; border: none; outline: none; background: none;}
+.product-add-to-cart > div button {width: 30%; height: 100%; cursor: pointer; display: flex; flex-direction: row; justify-content: center; align-items: center;}
+.product-add-to-cart > div button svg use {transition: .3s;}
+.product-add-to-cart > div button:hover svg use {fill: var(--intermediate-orange-color);}
+.product-add-to-cart > div input {width: 40%; font-size: 16px; text-align: center; padding: 15px;}
+.product-add-to-cart > button {width: 60%; display: flex; flex-direction: row; justify-content: center; align-items: center; background: var(--orange-color); padding: 15px; color: #fff; cursor: pointer; transition: .3s;}
+.product-add-to-cart > button:hover {background: var(--intermediate-orange-color);}
+.product-add-to-cart > button svg {display: inline-block; width: 18px; height: auto; margin-right: 20px;}
+.product-add-to-cart > button svg path {fill: #fff;}
 
 #show-images-product {position: fixed; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgb(0 0 0 / 70%); display: none; flex-direction: column; justify-content: center; align-items: center;}
-#show-images-product >div {width: 450px;}
-#show-images-product >div:first-child {display: block; margin-top: 0; position: relative;}
-#show-images-product >div:first-child >div {width: 100%; overflow: hidden;}
-#show-images-product >div:first-child >div >div {width: 400%; display: flex; position: relative;}
-#show-images-product >div:first-child >div >div >img {border-radius: 20px; width: 25%; height: auto;}
-#show-images-product >div:first-child button {position: absolute; border: none; outline: none; cursor: pointer;}
-#show-images-product >div:first-child button:nth-child(2) {top: -40px; right: 0; padding: 5px; background: transparent; }
-#show-images-product >div:first-child button:nth-child(3) {top: 50%; left: 0; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: #fff;}
-#show-images-product >div:first-child button:nth-child(4) {top: 50%; right: 0; transform: translate(50%, -50%); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: #fff;}
-#show-images-product >div:first-child button:nth-child(2) svg {width: 16px; height: auto;}
-#show-images-product >div:first-child button:nth-child(2):hover svg path {fill: var(--orange-color);}
-#show-images-product >div:first-child button:nth-child(3):hover svg path, #show-images-product >div:first-child button:nth-child(4):hover svg path {stroke: var(--orange-color);}
-#show-images-product >div:first-child button:nth-child(2) svg path {fill: #fff; transition: .3s;}
-#show-images-product >div:first-child button:nth-child(2) svg path, #show-images-product >div:first-child button:nth-child(3) svg path, #show-images-product >div:first-child button:nth-child(4) svg path {transition: .3s;}
+#show-images-product > div {width: 450px;}
+#show-images-product > div:first-child {display: block; margin-top: 0; position: relative;}
+#show-images-product > div:first-child > div {width: 100%; overflow: hidden;}
+#show-images-product > div:first-child > div > div {width: 400%; display: flex; position: relative;}
+#show-images-product > div:first-child > div > div > img {border-radius: 20px; width: 25%; height: auto;}
+#show-images-product > div:first-child button {position: absolute; border: none; outline: none; cursor: pointer;}
+#show-images-product > div:first-child button:nth-child(2) {top: -40px; right: 0; padding: 5px; background: transparent; }
+#show-images-product > div:first-child button:nth-child(3) {top: 50%; left: 0; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: #fff;}
+#show-images-product > div:first-child button:nth-child(4) {top: 50%; right: 0; transform: translate(50%, -50%); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: #fff;}
+#show-images-product > div:first-child button:nth-child(2) svg {width: 16px; height: auto;}
+#show-images-product > div:first-child button:nth-child(2):hover svg path {fill: var(--orange-color);}
+#show-images-product > div:first-child button:nth-child(3):hover svg path, #show-images-product > div:first-child button:nth-child(4):hover svg path {stroke: var(--orange-color);}
+#show-images-product > div:first-child button:nth-child(2) svg path {fill: #fff; transition: .3s;}
+#show-images-product > div:first-child button:nth-child(2) svg path, #show-images-product > div:first-child button:nth-child(3) svg path, #show-images-product > div:first-child button:nth-child(4) svg path {transition: .3s;}
 
 /* ==========[ footer ]========== */
 footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
@@ -109,7 +109,7 @@ footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
 @media screen and (max-width: 1200px){
     header, main, footer {max-width: 90%;}
 
-    main >div {padding: 10px 20px;}
+    main > div {padding: 10px 20px;}
 }
 
 @media screen and (max-width: 970px){
@@ -119,25 +119,25 @@ footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
     .sticker {right: 0;}
 
     .product-presentation-images, .product-presentation-infos {width: 47%;}
-    .product-presentation-infos >div:nth-child(1) h1 {font-size: 1em;}
-    .product-presentation-infos >div:nth-child(1) h2 {font-size: 2.2em; line-height: 1.2em; margin-bottom: 10%;}
-    .product-presentation-infos >div:nth-child(1) p {font-size: .9em; line-height: 1.6em;}
+    .product-presentation-infos > div:nth-child(1) h1 {font-size: 1em;}
+    .product-presentation-infos > div:nth-child(1) h2 {font-size: 2.2em; line-height: 1.2em; margin-bottom: 10%;}
+    .product-presentation-infos > div:nth-child(1) p {font-size: .9em; line-height: 1.6em;}
 }
 
 @media screen and (max-width: 780px){
     #logo {grid-area: 1/2; margin-right: 0;}
-    header >div:first-child {display: grid; gap: 10px;}
-    header >div nav {grid-area: 1/1; flex-direction: column; height: max-content;}
-    header >div nav >div:first-child {display: flex; cursor: pointer; z-index: 2;}
-    header >div nav >div:last-child {display: none; position: absolute; top: 0; left: -5.5%; width: 100vw; height: 100vh; z-index: 1;}
-    header >div nav >div:last-child >div {transform: translateX(-101%); width: 50%; height: 100%; background: #fff; padding: 100px 0 0 6%;}
-    header >div nav >div:last-child >div ul {flex-direction: column; align-items: flex-start; height: auto; width: 100%; height: max-content; background: #fff; z-index: 1;}
-    header >div nav >div:last-child >div ul li {margin: 0; height: 40px;}
-    header >div nav >div:last-child >div ul li a {color: var(--very-vark-blue); font-weight: 700;}
-    header >div nav >div:last-child >div ul li a:hover {border-bottom: 4px solid transparent}
+    header > div:first-child {display: grid; gap: 10px;}
+    header > div nav {grid-area: 1/1; flex-direction: column; height: max-content;}
+    header > div nav > div:first-child {display: flex; cursor: pointer; z-index: 2;}
+    header > div nav > div:last-child {display: none; position: absolute; top: 0; left: -5.5%; width: 100vw; height: 100vh; z-index: 1;}
+    header > div nav > div:last-child > div {transform: translateX(-101%); width: 50%; height: 100%; background: #fff; padding: 100px 0 0 6%;}
+    header > div nav > div:last-child > div ul {flex-direction: column; align-items: flex-start; height: auto; width: 100%; height: max-content; background: #fff; z-index: 1;}
+    header > div nav > div:last-child > div ul li {margin: 0; height: 40px;}
+    header > div nav > div:last-child > div ul li a {color: var(--very-vark-blue); font-weight: 700;}
+    header > div nav > div:last-child > div ul li a:hover {border-bottom: 4px solid transparent}
 
-    main >div {flex-direction: column;}
-    .product-presentation-images, .product-presentation-infos, #show-images-product >div {width: 350px;}
+    main > div {flex-direction: column;}
+    .product-presentation-images, .product-presentation-infos, #show-images-product > div {width: 350px;}
     .product-presentation-images {margin-bottom: 50px;}
 }
 
@@ -145,30 +145,30 @@ footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
     header, main, footer {max-width: 100%;}
     header {height: max-content; border: none}
     header, .product-presentation-infos {padding: 0 25px;}
-    header >div:first-child {margin-right: 20px;}
-    header >div nav >div:last-child {left: 0;}
-    header >div nav >div:last-child >div {width: 70%; padding: 100px 0 0 8%;}
+    header > div:first-child {margin-right: 20px;}
+    header > div nav > div:last-child {left: 0;}
+    header > div nav > div:last-child > div {width: 70%; padding: 100px 0 0 8%;}
     #logo {width: 90%;}
     #logo a svg {width: 100%;}
     #cart {width: 90px;}
-    #cart >div:last-child {max-width: 35px;}
+    #cart > div:last-child {max-width: 35px;}
     .sticker {top: 110%; right: 5%; width: 90%; border-radius: 10px;}
 
-    main >div {margin: 0; padding: 0;}
+    main > div {margin: 0; padding: 0;}
     .product-presentation-images {margin: 0;}
-    .product-presentation-images >div:first-child, #show-images-product >div:last-child, #show-images-product >div:first-child button {display: none;}
-    .product-presentation-infos, .product-presentation-images, #show-images-product >div {width: 100%;}
+    .product-presentation-images > div:first-child, #show-images-product > div:last-child, #show-images-product > div:first-child button {display: none;}
+    .product-presentation-infos, .product-presentation-images, #show-images-product > div {width: 100%;}
     .product-presentation-infos, #show-images-product {margin-bottom: 25px;}
     #show-images-product {display: flex; position: unset; background: none;}
-    #show-images-product >div:first-child button:nth-child(3), #show-images-product >div:first-child button:nth-child(4) {width: 10%; height: 10%;}
-    #show-images-product >div:first-child button:nth-child(3) {left: 10%}
-    #show-images-product >div:first-child button:nth-child(4) {right: 10%}
-    #show-images-product >div:first-child button:nth-child(3) svg, #show-images-product >div:first-child button:nth-child(4) svg {width: 100%;}
-    /* #show-images-product >div:first-child button svg {width: 100%;} */
-    #show-images-product >div:first-child >div >div >img {border-radius: unset;}
+    #show-images-product > div:first-child button:nth-child(3), #show-images-product > div:first-child button:nth-child(4) {width: 10%; height: 10%;}
+    #show-images-product > div:first-child button:nth-child(3) {left: 10%}
+    #show-images-product > div:first-child button:nth-child(4) {right: 10%}
+    #show-images-product > div:first-child button:nth-child(3) svg, #show-images-product > div:first-child button:nth-child(4) svg {width: 100%;}
+    /* #show-images-product > div:first-child button svg {width: 100%;} */
+    #show-images-product > div:first-child > div > div > img {border-radius: unset;}
     .product-add-to-cart {flex-direction: column;}
-    .product-add-to-cart >div, .product-add-to-cart >button {width: 100%;}
-    .product-add-to-cart >div {margin-bottom: 20px;}
+    .product-add-to-cart > div, .product-add-to-cart > button {width: 100%;}
+    .product-add-to-cart > div {margin-bottom: 20px;}
     .product-price {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
 
 }
