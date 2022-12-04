@@ -1,27 +1,27 @@
 /*==================| ADD A PRODUCT |==================*/
 
 // My elements
-const btnMinus = document.querySelector('.product-add-to-cart > div button:nth-child(1)')
-const btnPlus = document.querySelector('.product-add-to-cart > div button:nth-child(3)')
-const input = document.querySelector('.product-add-to-cart > div input')
-const btnAdd = document.querySelector('.product-add-to-cart > button')
+const [btnMinus, btnPlus] = document.querySelectorAll('.product-add-to-cart div button')
+const input = document.querySelector('.product-add-to-cart input')
+const btnAdd = document.querySelector('.product-add-to-cart button')
 const svgCart = document.querySelector('#cart > div:first-child')
 const label = svgCart.querySelector('span')
-const avatar = document.querySelector('#cart > div:last-child img')
+const avatar = document.querySelector('#cart img')
 const sticker = document.querySelector('header > div:last-child')
 
-//My count & price
+// My count & price
 let count = 0
 let price = 125.00
 
-//My text
+// My text
 const emptyText = '<span>Your cart is empty.</span>'
 
-//My div cart
+// My div cart
 const stickerDivContent = sticker.querySelector('div')
 
-//My functions
+// My functions
 const createStickerDivContentEmpty = () => stickerDivContent.innerHTML = emptyText
+
 const createStickerDivContentFilled = () => {
     const createElts = (type) => document.createElement(type)
     const img =  createElts('img')
@@ -44,10 +44,10 @@ const createStickerDivContentFilled = () => {
     stickerDivContent.appendChild(divProduct)
     stickerDivContent.appendChild(divButton)
 
-    //On click on svg trash
     if (count > 0) {
         const svg = stickerDivContent.querySelector('svg')
-
+        
+        // On click on svg trash
         svg.addEventListener('click', () => {
             stickerDivContent.innerHTML = emptyText
             count = 0
@@ -58,191 +58,183 @@ const createStickerDivContentFilled = () => {
     }
 }
 
-//On click on button minus
-btnMinus.addEventListener('click', () => {
+const displayCountAndPrice = (count, price) => {
+    stickerDivContent.querySelector('span').children[1].textContent = count
+    stickerDivContent.querySelector('strong').textContent = `$${count * price}.00`
+}
 
+const toogleStickerClass = () => sticker.classList.toggle('sticker')
+
+// My events
+btnMinus.addEventListener('click', () => {
     switch(count) {
         case 0:
-            return false
-
-        case 1:
-            count --
-            input.value = count
-            label.textContent = ''
-            label.classList.remove('cart-count-not-empty')
-            createStickerDivContentEmpty()
-            break
+            return
             
         default:
             count--
             input.value = count
-            label.textContent = count
-            stickerDivContent.childNodes[0].childNodes[1].childNodes[3].textContent = count
-            stickerDivContent.childNodes[0].childNodes[1].childNodes[5].textContent = `$${count * price}.00`
+
+            switch(count) {
+                case 0:
+                    label.textContent = ''
+                    label.classList.remove('cart-count-not-empty')
+                    createStickerDivContentEmpty()
+                    break
+
+                default:
+                    label.textContent = count
+                    displayCountAndPrice(count, price)
+            }
     }
 })
 
-//On click on button plus
 btnPlus.addEventListener('click', () => {
     count++
     input.value = count
-    
-    if(count > 0){
-        label.textContent = count
-        label.classList.add('cart-count-not-empty')
-    }
+    label.textContent = count
+    label.classList.add('cart-count-not-empty')
 
-    if(count === 1){
+    if (count === 1) {
         stickerDivContent.removeChild(stickerDivContent.childNodes[0])
         createStickerDivContentFilled()
     }
 
-    stickerDivContent.childNodes[0].childNodes[1].childNodes[3].textContent = count
-    stickerDivContent.childNodes[0].childNodes[1].childNodes[5].textContent = `$${count * price}.00`
+    displayCountAndPrice(count, price)
 })
 
-//On click on avatar
-avatar.addEventListener('click', () => {
-    sticker.classList.toggle('sticker')
-})
-
-//On click on svg cart
-svgCart.addEventListener('click', () => {
-    sticker.classList.toggle('sticker')
-})
+avatar.addEventListener('click', toogleStickerClass)
+svgCart.addEventListener('click', toogleStickerClass)
 
 createStickerDivContentEmpty()
 
 /*==================| SHOW IMAGES PRODUCT |==================*/
 
-//My elements
+// My elements
 const thumbnailList = document.querySelectorAll('.product-presentation-images div a')
 const lightBox = document.getElementById('show-images-product')
-const closeBtn = document.querySelector('#show-images-product > div:first-child button:nth-child(2)')
-const prevBtn = document.querySelector('#show-images-product > div:first-child button:nth-child(3)')
-const nextBtn = document.querySelector('#show-images-product > div:first-child button:nth-child(4)')
+const [closeBtn, prevBtn, nextBtn] = lightBox.querySelectorAll('button')
 const slider = document.querySelector('#show-images-product > div:first-child div div')
+const length = slider.children.length // number : 4
 
 let countSlider = 0
 
+// My functions
+function moveSlider(slider, count) {
+    let sliderWidth = slider.clientWidth
+    slider.style.transform = `translateX(-${(sliderWidth / length) * count}px)`
+}
+
+function loopSearchActiveClass(number, list) {
+    for (let i = number; i < list.length; i++) {
+        if (list[i].className === 'active'){
+            list[i].classList.remove('active')
+            
+            if (number >= length) {
+                list[i - length].classList.remove('active')
+                
+            } else {
+                list[i + length].classList.remove('active')
+            }
+        }
+    }
+}
+
+function handleThumbnails() {
+    moveSlider(slider, countSlider)
+
+    thumbnailList.forEach((thumbnail, index, thumbnails) => {
+        if (index >= length) {
+
+            if (thumbnail.className === 'active') {
+                thumbnail.classList.remove('active')
+                thumbnails[index - length].classList.remove('active')
+            }
+
+            thumbnails[countSlider + length].classList.add('active')
+            thumbnails[countSlider].classList.add('active')
+        }
+    })
+}
+
+// My events
 closeBtn.addEventListener('click', () => {
     lightBox.style.display = 'none'
 })
 
 nextBtn.addEventListener('click', () => {
-    if(countSlider === 3){
-        return
-    } else {
-        countSlider++
-        let sliderWidth = slider.clientWidth
-        slider.style.transform = `translateX(-${(sliderWidth/4)*countSlider}px)`
-        thumbnailList.forEach((thumbnail, index) => {
-            if(index > 3){
-                for(let i=4; i<thumbnailList.length; i++){
-
-                    if(thumbnailList[i].className === 'active'){
-                        thumbnailList[i].classList.remove('active')
-                        thumbnailList[i-4].classList.remove('active')
-                    }
-                }
-                thumbnailList[countSlider+4].classList.add('active')
-                thumbnailList[countSlider].classList.add('active')
-            }
-        })
-    }
+    if (countSlider === 3) return
+    
+    countSlider++
+    handleThumbnails()
 })
 
 prevBtn.addEventListener('click', () => {
-    if(countSlider === 0){
-        return
-    } else {
-        countSlider--
-        let sliderWidth = slider.clientWidth
-        slider.style.transform = `translateX(-${(sliderWidth/4)*countSlider}px)`
-        thumbnailList.forEach((thumbnail, index) => {
-            if(index > 3){
-                for(let i=4; i<thumbnailList.length; i++){
-
-                    if(thumbnailList[i].className === 'active'){
-                        thumbnailList[i].classList.remove('active')
-                        thumbnailList[i-4].classList.remove('active')
-                    }
-                }
-                thumbnailList[countSlider+4].classList.add('active')
-                thumbnailList[countSlider].classList.add('active')
-            }
-        })
-    }
+    if (countSlider === 0) return
+    
+    countSlider--
+    handleThumbnails()
 })
 
-thumbnailList.forEach((thumbnail, index) => {
+thumbnailList.forEach((thumbnail, index, thumbnails) => {
 
     thumbnail.addEventListener('click', () => {
-
-        lightBox.style.display = 'flex'
+        if (lightBox.style.display !== 'flex') {
+            lightBox.style.display = 'flex'
+        }
             
-        if(index > 3){
+        if (index >= length) {
+            loopSearchActiveClass(length, thumbnails)
+            moveSlider(slider, index - length)
 
-            for(let i=4; i<thumbnailList.length; i++){
-
-                if(thumbnailList[i].className === 'active'){
-                    thumbnailList[i].classList.remove('active')
-                    thumbnailList[i-4].classList.remove('active')
-                }
-            }
-            
-            let sliderWidth = slider.clientWidth
-            slider.style.transform = `translateX(-${(sliderWidth/4)*(index-4)}px)`
             thumbnail.classList.add('active')
-            thumbnailList[index-4].classList.add('active')
-            countSlider = index-4
-        }
+            thumbnails[index - length].classList.add('active')
+            countSlider = index - length
 
-        else {
-            if(thumbnail.childNodes[1].alt = `image-product-${index+1}`){
+        } else {
+            const thumb = thumbnail.querySelector('img')
+            const image = thumbnail.parentNode.parentNode.children[0]
 
-                thumbnail.parentNode.parentNode.childNodes[1].setAttribute('src', `images/image-product-${index+1}.jpg`)
+            if (thumb.alt = `image-product-${index + 1}`) {
+                image.src = `images/image-product-${index + 1}.jpg`
 
-                for(let i=0; i<4; i++){
-                    if(thumbnailList[i].className === 'active'){
-                        thumbnailList[i].classList.remove('active')
-                        thumbnailList[i+4].classList.remove('active')
-                    }
-                }
+                loopSearchActiveClass(0, thumbnails)
+                moveSlider(slider, index)
 
-                let sliderWidth = slider.clientWidth
-                slider.style.transform = `translateX(-${(sliderWidth/4)*(index)}px)`
                 thumbnail.classList.add('active')
-                thumbnailList[index+4].classList.add('active')
+                thumbnails[index + length].classList.add('active')
                 countSlider = index
-
             }
         }
-
     })
 })
 
-
-
 /*==================| BURGER MENU ANIMATION |==================*/
 
-//My elements
-const burger = document.querySelector('header >div nav >div:first-child')
-const menu = document.querySelector('header >div nav >div:last-child')
-const contentMenu = document.querySelector('header >div nav >div:last-child >div')
-const lines = document.querySelectorAll('header >div nav >div:first-child div')
+// My elements
+const burger = document.querySelector('nav > div:first-child')
+const lines = burger.querySelectorAll('div')
+const menu = document.querySelector('nav > div:last-child')
+const content = menu.querySelector('div')
 
+// My events
 burger.addEventListener('click', () => {
     menu.classList.toggle('display-content')
-    contentMenu.classList.toggle('move')
+    content.classList.toggle('move')
 
     lines.forEach((line, index) => {
-        if(index === 0){
-            line.classList.toggle('rotation-line-1')
-        } else if (index === 2){
-            line.classList.toggle('rotation-line-3')
-        } else {
-            line.classList.toggle('hide-line-2')
+
+        switch(index) {
+            case 0:
+                line.classList.toggle('rotation-line-1')
+                break
+
+            case 2:
+                line.classList.toggle('rotation-line-3')
+                break
+
+            default:
+                line.classList.toggle('hide-line-2')
         }
     })
 })

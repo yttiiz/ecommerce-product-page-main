@@ -89,7 +89,7 @@ main > div {display: flex; flex-direction: row; justify-content: space-between; 
 #show-images-product > div {width: 450px;}
 #show-images-product > div:first-child {display: block; margin-top: 0; position: relative;}
 #show-images-product > div:first-child > div {width: 100%; overflow: hidden;}
-#show-images-product > div:first-child > div > div {width: 400%; display: flex; position: relative;}
+#show-images-product > div:first-child > div > div {width: 400%; display: flex; position: relative; transition: transform ease .5s;}
 #show-images-product > div:first-child > div > div > img {border-radius: 20px; width: 25%; height: auto;}
 #show-images-product > div:first-child button {position: absolute; border: none; outline: none; cursor: pointer;}
 #show-images-product > div:first-child button:nth-child(2) {top: -40px; right: 0; padding: 5px; background: transparent; }
@@ -101,6 +101,7 @@ main > div {display: flex; flex-direction: row; justify-content: space-between; 
 #show-images-product > div:first-child button:nth-child(2) svg path {fill: #fff; transition: .3s;}
 #show-images-product > div:first-child button:nth-child(2) svg path, #show-images-product > div:first-child button:nth-child(3) svg path, #show-images-product > div:first-child button:nth-child(4) svg path {transition: .3s;}
 
+.none {display: none !important;}
 /* ==========[ footer ]========== */
 footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
 .attribution { font-size: 11px; text-align: center; }
