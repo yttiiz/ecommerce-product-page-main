@@ -17,18 +17,16 @@ let price = 125.00
 const emptyText = '<span>Your cart is empty.</span>'
 
 // My div cart
-const stickerDivContent = sticker.querySelector('div')
+const stickerContent = sticker.querySelector('div')
 
 // My functions
-const createStickerDivContentEmpty = () => stickerDivContent.innerHTML = emptyText
+const createStickerContentEmpty = () => stickerContent.innerHTML = emptyText
+const toogleStickerClass = () => sticker.classList.toggle('sticker')
+const createElts = (type) => document.createElement(type)
 
-const createStickerDivContentFilled = () => {
-    const createElts = (type) => document.createElement(type)
-    const img =  createElts('img')
-    const span =  createElts('span')
-    const button = createElts('button')
-    const divProduct = createElts('div')
-    const divButton = createElts('div')
+function createStickerContentFilled() {
+    const img =  createElts('img'), span =  createElts('span'), button = createElts('button')
+    const divProduct = createElts('div'), divButton = createElts('div')
     
     img.src = 'images/image-product-1-thumbnail.jpg'
     img.alt = 'image product 1'
@@ -41,15 +39,15 @@ const createStickerDivContentFilled = () => {
     button.textContent = 'Checkout'
     divButton.appendChild(button)
     
-    stickerDivContent.appendChild(divProduct)
-    stickerDivContent.appendChild(divButton)
+    stickerContent.appendChild(divProduct)
+    stickerContent.appendChild(divButton)
 
     if (count > 0) {
-        const svg = stickerDivContent.querySelector('svg')
+        const svg = stickerContent.querySelector('svg')
         
         // On click on svg trash
         svg.addEventListener('click', () => {
-            stickerDivContent.innerHTML = emptyText
+            stickerContent.innerHTML = emptyText
             count = 0
             input.value = count
             label.textContent = ''
@@ -58,12 +56,10 @@ const createStickerDivContentFilled = () => {
     }
 }
 
-const displayCountAndPrice = (count, price) => {
-    stickerDivContent.querySelector('span').children[1].textContent = count
-    stickerDivContent.querySelector('strong').textContent = `$${count * price}.00`
+function displayCountAndPrice(count, price) {
+    stickerContent.querySelector('span').children[1].textContent = count
+    stickerContent.querySelector('strong').textContent = `$${count * price}.00`
 }
-
-const toogleStickerClass = () => sticker.classList.toggle('sticker')
 
 // My events
 btnMinus.addEventListener('click', () => {
@@ -79,7 +75,7 @@ btnMinus.addEventListener('click', () => {
                 case 0:
                     label.textContent = ''
                     label.classList.remove('cart-count-not-empty')
-                    createStickerDivContentEmpty()
+                    createStickerContentEmpty()
                     break
 
                 default:
@@ -96,8 +92,8 @@ btnPlus.addEventListener('click', () => {
     label.classList.add('cart-count-not-empty')
 
     if (count === 1) {
-        stickerDivContent.removeChild(stickerDivContent.childNodes[0])
-        createStickerDivContentFilled()
+        stickerContent.removeChild(stickerContent.childNodes[0])
+        createStickerContentFilled()
     }
 
     displayCountAndPrice(count, price)
@@ -106,11 +102,12 @@ btnPlus.addEventListener('click', () => {
 avatar.addEventListener('click', toogleStickerClass)
 svgCart.addEventListener('click', toogleStickerClass)
 
-createStickerDivContentEmpty()
+createStickerContentEmpty()
 
 /*==================| SHOW IMAGES PRODUCT |==================*/
 
 // My elements
+const mainVisual = document.querySelector('.product-presentation-images > div > img')
 const thumbnailList = document.querySelectorAll('.product-presentation-images div a')
 const lightBox = document.getElementById('show-images-product')
 const [closeBtn, prevBtn, nextBtn] = lightBox.querySelectorAll('button')
@@ -124,6 +121,8 @@ function moveSlider(slider, count) {
     let sliderWidth = slider.clientWidth
     slider.style.transform = `translateX(-${(sliderWidth / length) * count}px)`
 }
+
+const fillImage = (img, number) => img.src = `images/image-product-${number + 1}.jpg`
 
 function loopSearchActiveClass(number, list) {
     for (let i = number; i < list.length; i++) {
@@ -190,13 +189,15 @@ thumbnailList.forEach((thumbnail, index, thumbnails) => {
             thumbnail.classList.add('active')
             thumbnails[index - length].classList.add('active')
             countSlider = index - length
+            fillImage(mainVisual, countSlider)
 
         } else {
             const thumb = thumbnail.querySelector('img')
             const image = thumbnail.parentNode.parentNode.children[0]
 
             if (thumb.alt = `image-product-${index + 1}`) {
-                image.src = `images/image-product-${index + 1}.jpg`
+                fillImage(image, index)
+                fillImage(mainVisual, index)
 
                 loopSearchActiveClass(0, thumbnails)
                 moveSlider(slider, index)
