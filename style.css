@@ -1,6 +1,7 @@
 *, *::before, *::after {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Kumbh Sans', sans-serif; --orange-color: hsl(26, 100%, 55%); --pale-orange-color: hsl(25, 100%, 94%); --intermediate-orange-color: hsl(25, 100%, 71%); --light-grey: hsl(220, 14%, 75%); --dark-grayish-blue: hsl(219, 9%, 45%); --very-vark-blue: hsl(220, 13%, 13%); --black-lightbox: rgb(0 0 0 / 75%);}
 body {overflow-x: hidden;}
 ul {list-style: none;}
+button {border: none; outline: none; background: none; cursor: pointer}
 header, main, footer {max-width: 1110px; margin: 0 auto;}
 
 /* ==========[ header ]========== */
@@ -21,7 +22,7 @@ header > div nav > div:last-child > div ul li {margin: 0 15px;}
 header > div nav > div:last-child > div ul li:first-child {margin-left: 0;}
 header > div nav > div:last-child > div ul li:last-child {margin-right: 0;}
 header > div nav > div:last-child > div ul li a {text-decoration: none; color: var(--light-grey); border-top: 4px solid transparent; border-bottom: 4px solid transparent;}
-header > div nav > div:last-child > div ul li a, #cart > div:first-child svg path, #cart > div:last-child img, .product-presentation-images > div a img {transition: .3s;}
+header > div nav > div:last-child > div ul li a, #cart > button:first-child svg path, #cart > div:last-child img, .product-presentation-images > div a img {transition: .3s;}
 header > div nav > div:last-child > div ul li a:hover {color: var(--very-vark-blue); border-bottom: 4px solid var(--orange-color)}
 
 .display-content {background: var(--black-lightbox); display: block !important;}
@@ -32,11 +33,11 @@ header > div nav > div:last-child > div ul li a:hover {color: var(--very-vark-bl
 .hide-line-2 {display: none;}
 
 #cart {width: 150px;}
-#cart > div:first-child {cursor: pointer; padding: 5px; position: relative;}
-#cart > div:first-child svg:hover path {fill: var(--very-vark-blue)}
-#cart > div:last-child {max-width: 70px; position: relative;}
-#cart > div:last-child > img:hover {border: 4px solid var(--orange-color)}
-#cart > div:last-child > img {width: 100%; height: auto; border: 4px solid transparent; border-radius: 50%; cursor: pointer;}
+#cart > button:first-child {padding: 5px; position: relative;}
+#cart > button:first-child svg:hover path {fill: var(--very-vark-blue)}
+#cart > button:last-child {max-width: 70px; position: relative;}
+#cart > button:last-child img:hover {border: 4px solid var(--orange-color)}
+#cart > button:last-child img {width: 100%; height: auto; border: 4px solid transparent; border-radius: 50%; cursor: pointer;}
 #cart > div:last-child > div {display: none;}
 
 .cart-count-not-empty {position: absolute; top: -5%; left: 35%; padding: 1px 8px; border-radius: 15px; background: var(--orange-color); color: #fff; font-size: 11px; font-weight: 700;}
@@ -152,7 +153,7 @@ footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
     #logo {width: 90%;}
     #logo a svg {width: 100%;}
     #cart {width: 90px;}
-    #cart > div:last-child {max-width: 35px;}
+    #cart > button:last-child {max-width: 35px;}
     .sticker {top: 110%; right: 5%; width: 90%; border-radius: 10px;}
 
     main > div {margin: 0; padding: 0;}
