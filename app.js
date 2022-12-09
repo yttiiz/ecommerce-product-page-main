@@ -94,7 +94,7 @@ btnAdd.addEventListener('click', () => {
     }
 })
 
-// Click out the box to close the sticker cart
+// Click out of the box to close the sticker cart
 window.addEventListener('click', (e) => {
     const target = e.target
 
@@ -124,6 +124,9 @@ let countSlider = 0
 
 // My functions
 const fillImage = (img, number) => img.src = `images/image-product-${number + 1}.jpg`
+const addNoneClass = (item) => item.classList.add('none')
+const removeNoneClass = (item) => item.classList.remove('none')
+const isContainingNoneClass = (item) => item.classList.contains('none')
 const addActiveClass = (item) => item.classList.add('active')
 const removeActiveClass = (item) => item.classList.remove('active')
 const removeAllActiveClass = (num, nodelist) => {
@@ -132,12 +135,13 @@ const removeAllActiveClass = (num, nodelist) => {
         : removeActiveClass(nodelist[num + length])
 }
 
-function moveSlider(slider, count) {
+function moveSlider(count) {
     let sliderWidth = slider.clientWidth
+
     slider.style.transform = `translateX(-${(sliderWidth / length) * count}px)`
 }
 
-function loopSearchActiveClass(number, list) {
+function loopForSearchingActiveClass(number, list) {
     for (let i = number; i < list.length; i++) {
         
         if (list[i].className === 'active') {
@@ -147,8 +151,77 @@ function loopSearchActiveClass(number, list) {
     }
 }
 
-function handleThumbnails() {
-    moveSlider(slider, countSlider)
+/**
+ * Verify from which button the `event` is coming from and disable it if it's the beginning or the end of the slider.
+ * @param {HTMLButtonElement} el `Prev` of `Next` button.
+ * @param {string} data Dataset value of the current button ('prev-btn' or 'next-btn').
+ */
+function handleSliderBtnsFromBtns(el, data) {
+    switch(data) {
+        case 'prev-btn':
+            switch(countSlider) {
+                case 1:
+                    addNoneClass(el)
+                    break
+
+                default:
+                    removeNoneClass(nextBtn)
+            }
+            
+            countSlider--
+            break
+            
+        default:
+            switch(countSlider) {
+                case 2:
+                    addNoneClass(el)
+                    break
+
+                default:
+                    removeNoneClass(prevBtn)
+            }
+            
+            countSlider++
+    }
+}
+
+/**
+* Verify from which thumbnail the `event` is coming from and disable the correct button, if it's the beginning or the end of the slider.
+* @param {number} index Index of the current thumbnail in the parent nodelist.
+*/
+function handleSliderBtnsFromThumbnails(index) {
+    switch(index) {
+        //starting thumbnails
+        case length:
+        case 0:
+            if (!isContainingNoneClass(prevBtn)) addNoneClass(prevBtn)
+            break
+
+        //ending thumnails
+        case length + (length - 1):
+        case length - 1:
+            if (!isContainingNoneClass(nextBtn)) addNoneClass(nextBtn)
+            break
+
+        default:
+            if (isContainingNoneClass(prevBtn)) {
+                removeNoneClass(prevBtn)
+                
+            } else if (isContainingNoneClass(nextBtn)) {
+                removeNoneClass(nextBtn)
+            }
+    }
+}
+
+/**
+ * Manipulates the thumbnails by adding or removing the active class.
+ * @param {Event} e Event coming from one of the slider button.
+ */
+function handleThumbnails(e) {
+    const el = e.currentTarget, data = e.currentTarget.dataset.info
+
+    handleSliderBtnsFromBtns(el, data)
+    moveSlider(countSlider)
 
     thumbnailList.forEach((thumbnail, index, thumbnails) => {
         if (index >= length) {
@@ -169,18 +242,16 @@ closeBtn.addEventListener('click', () => {
     lightBox.style.display = 'none'
 })
 
-nextBtn.addEventListener('click', () => {
+nextBtn.addEventListener('click', (e) => {
     if (countSlider === 3) return
     
-    countSlider++
-    handleThumbnails()
+    handleThumbnails(e)
 })
 
-prevBtn.addEventListener('click', () => {
+prevBtn.addEventListener('click', (e) => {
     if (countSlider === 0) return
     
-    countSlider--
-    handleThumbnails()
+    handleThumbnails(e)
 })
 
 thumbnailList.forEach((thumbnail, index, thumbnails) => {
@@ -191,8 +262,9 @@ thumbnailList.forEach((thumbnail, index, thumbnails) => {
         }
             
         if (index >= length) {
-            loopSearchActiveClass(length, thumbnails)
-            moveSlider(slider, index - length)
+            handleSliderBtnsFromThumbnails(index)
+            loopForSearchingActiveClass(length, thumbnails)
+            moveSlider(index - length)
 
             addActiveClass(thumbnail)
             addActiveClass(thumbnails[index - length])
@@ -204,17 +276,18 @@ thumbnailList.forEach((thumbnail, index, thumbnails) => {
             const thumb = thumbnail.querySelector('img')
             const image = thumbnail.parentNode.parentNode.children[0]
 
-            if (thumb.alt = `image-product-${index + 1}`) {
+            if (thumb.alt === `image-product-${index + 1}`) {
                 fillImage(image, index)
                 fillImage(mainVisual, index)
-
-                loopSearchActiveClass(0, thumbnails)
-                moveSlider(slider, index)
-
-                addActiveClass(thumbnail)
-                addActiveClass(thumbnails[index + length])
-                countSlider = index
             }
+
+            handleSliderBtnsFromThumbnails(index)
+            loopForSearchingActiveClass(0, thumbnails)
+            moveSlider(index)
+
+            addActiveClass(thumbnail)
+            addActiveClass(thumbnails[index + length])
+            countSlider = index
         }
     })
 })
