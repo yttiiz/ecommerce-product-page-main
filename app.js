@@ -300,7 +300,7 @@ thumbnailList.forEach((thumbnail, index, thumbnails) => {
 // My elements
 const burger = document.getElementById('burger')
 const lines = burger.querySelectorAll('span')
-const menu = document.querySelector('nav > div:last-child')
+const menu = document.querySelector('nav > div')
 const content = menu.querySelector('div')
 
 // My events
