@@ -196,12 +196,14 @@ function handleSliderBtnsFromThumbnails(index) {
         case length:
         case 0:
             if (!isContainingNoneClass(prevBtn)) addNoneClass(prevBtn)
+            if (isContainingNoneClass(nextBtn)) removeNoneClass(nextBtn)
             break
 
         //ending thumnails
         case length + (length - 1):
         case length - 1:
             if (!isContainingNoneClass(nextBtn)) addNoneClass(nextBtn)
+            if (isContainingNoneClass(prevBtn)) removeNoneClass(prevBtn)
             break
 
         default:
@@ -296,8 +298,8 @@ thumbnailList.forEach((thumbnail, index, thumbnails) => {
 /*==================| BURGER MENU ANIMATION |==================*/
 
 // My elements
-const burger = document.querySelector('nav > div:first-child')
-const lines = burger.querySelectorAll('div')
+const burger = document.getElementById('burger')
+const lines = burger.querySelectorAll('span')
 const menu = document.querySelector('nav > div:last-child')
 const content = menu.querySelector('div')
 

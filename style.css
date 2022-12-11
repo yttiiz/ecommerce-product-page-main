@@ -13,8 +13,8 @@ header > div nav, header > div nav ul li a {display: flex; flex-direction: row; 
 #logo {width: max-content; margin-right: 70px;}
 #logo a {display: block; padding: 20px 0;}
 #logo a img {width: 138px; height: auto;}
-header > div nav > div:first-child {display: none; width: 26px; height: 26px; display: none; flex-direction: column; justify-content: space-between; padding: 5px;}
-header > div nav > div:first-child div {width: 100%; height: 3px; background: var(--very-vark-blue); transform-origin: 0 50%; transition: .3s;}
+#burger {display: none; width: 26px; height: 26px; display: none; flex-direction: column; justify-content: space-between; padding: 5px;}
+#burger span {width: 100%; height: 3px; background: var(--very-vark-blue); transform-origin: 0 50%; transition: .3s;}
 header > div nav > div:last-child, header > div nav > div:last-child > div, header > div nav > div:last-child > div ul, header > div nav > div:last-child > div ul li, header > div nav > div:last-child > div ul li a {height: 100%;}
 header > div nav > div:last-child > div {position: absolute;}
     
@@ -127,10 +127,10 @@ footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
 }
 
 @media screen and (max-width: 780px){
-    #logo {grid-area: 1/2; margin-right: 0;}
     header > div:first-child {display: grid; gap: 10px;}
     header > div nav {grid-area: 1/1; flex-direction: column; height: max-content;}
-    header > div nav > div:first-child {display: flex; cursor: pointer; z-index: 2;}
+    #logo {grid-area: 1/2; margin-right: 0;}
+    #burger {display: flex; cursor: pointer; z-index: 2;}
     header > div nav > div:last-child {display: none; position: absolute; top: 0; left: -5.5%; width: 100vw; height: 100vh; z-index: 1;}
     header > div nav > div:last-child > div {transform: translateX(-101%); width: 50%; height: 100%; background: #fff; padding: 100px 0 0 6%;}
     header > div nav > div:last-child > div ul {flex-direction: column; align-items: flex-start; height: auto; width: 100%; height: max-content; background: #fff; z-index: 1;}
@@ -172,5 +172,4 @@ footer {border-top: 1px solid var(--light-grey); padding: 20px 0;}
     .product-add-to-cart > div, .product-add-to-cart > button {width: 100%;}
     .product-add-to-cart > div {margin-bottom: 20px;}
     .product-price {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
-
 }
